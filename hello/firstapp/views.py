@@ -5,7 +5,12 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanen
 
 
 def index(request):
-    return HttpResponse("<h2>Главная</h2>")
+    header = "Personal data"
+    langs = ["English", "German", "Spanish"]
+    user = {"name": "Maksim", "age": 30}
+    addr = ("Vinogradnaya", 23, 45)
+    data = {"header": header, "langs": langs, "user": user, "address": addr}
+    return render(request, "firstapp/index_app1.html", context=data)
 
 
 def about(request):
