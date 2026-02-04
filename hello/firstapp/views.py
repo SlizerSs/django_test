@@ -1,13 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
-
-# Create your views here.
+from .forms import UserForm
 
 
 def index(request):
-    age = 50
-    data = ["Ноутбуки", "Принтеры", "Сканеры", "диски", "Шнуры"]
-    return render(request, "firstapp/index.html", context={"data": data, "age": age})
+    if request.method == "POST":
+        name = request.POST.get("name")
+        age = request.POST.get("age")
+        output = "<h2>Пользователь</h2><h3>Имя - {0}, Возраст - {1}</hЗ>".format(name, age)
+        return HttpResponse(output)
+    else:
+        userform = UserForm()
+        return render(request, "firstapp/index.html", {"form": userform})
 
 
 def about(request):

@@ -1,22 +1,16 @@
-{% extends "firstapp/base.html" %}
-{% block title %}Index{% endblock title %}
-{% block header %}Главная страница{% endblock header %}
-{% block content%}
-<p>Анализ возpаста клиента</p>
-{% if age > 65 %}
-<p>Клиент достиг пенсионного возpаста</p>
-{% else %}
-<p>Клиент не является пенсионеpом</p>
-{% endif %}
-{% for i in data %}
-    <li>{{ i }}</li>
-        {% empty %}
-    <li>Категории продуктов отсутствуют</li>
-{% endfor %}
-{% with name="ЧАЙХАНА" nom=1 %}
-<div>
-<p>При магазине работает {{ name }}</p>
-<p>Номер N{{ nom }}</p>
-</div>
-{% endwith %}
-{% endblock content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Фopмa Django!</title>
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+    <table>
+        {{ form }}
+    </table>
+    <input type="submit" value="Отправить">
+</form>
+</body>
+</html>
