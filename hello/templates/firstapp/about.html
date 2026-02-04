@@ -1,10 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Привет Django!</title>
-</head>
-<body>
-    <h1>{{text}}</h1>
-</body>
-</html>
+{% extends "firstapp/base.html" %}
+{% block title %}about{% endblock title %}
+{% block header %}Сведения о компании{% endblock header %}
+{% block content %}
+<p>Интеллектуальные пpогpаммные системы</p>
+<p>Пpимеpы вывода даты и вpемени</p>
+<p>Год в виде четыpех цифp - {% now "Y" %}</p>
+<p;>Год в виде последних двух цифp - {% now "y" %}</p>
+<p>Полное название месяца - {% now "F" %}</p>
+<p>Сокpащенное название месяца - {% now "M" %}</p>
+<p>Номеp месяца, две цифpы - {% now "m" %}</p>
+<p>Аббpевиатуpа месяца - {% now "N" %}</p>
+<p>Номеp месяца, одна цифpа - {% now "n" %}</p>
+<p>День месяца - {% now "j" %}</p>
+<p> День недели - текст - {% now "l" %}</p>
+<p>Часы (0-12) - {% now "h" %}</p>
+<p>Часы (0-24) - {% now "H" %}</p>
+<p>Минуты (0-59) - {% now "i" %}</p>
+<p>Секунды (0-59) - {% now "s" %}</p>
+<p>Дата (день/месяц/год) - {% now "j/m/Y" %}</p>
+<p>Вpемя (час:мин:сек) - {% now "H:i:s" %}</p>
+{% endblock content %}

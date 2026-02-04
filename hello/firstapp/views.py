@@ -5,11 +5,13 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanen
 
 
 def index(request):
-    return render(request, "firstapp/index.html")
+    age = 50
+    data = ["Ноутбуки", "Принтеры", "Сканеры", "диски", "Шнуры"]
+    return render(request, "firstapp/index.html", context={"data": data, "age": age})
 
 
 def about(request):
-    return HttpResponse("<h2>О сайте</h2>")
+    return HttpResponse("/about")
 
 
 def contact(request):
