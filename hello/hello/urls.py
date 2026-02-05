@@ -4,6 +4,9 @@ from django.views.generic import TemplateView
 
 urlpatterns = [
     path('', views.index),
+    path('create/', views.create),
+    path('edit/<int:id>', views.edit),
+    path('delete/<int:id>', views.delete),
     path('about/', TemplateView.as_view(
         template_name="firstapp/about.html",
         extra_context={"text": "Домашняя страница Django!"})),

@@ -3,14 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <title>Фopмa Django!</title>
+<style>
+.myfield{
+    border:2px solid #000;
+    border-radius:5px;
+    height:25px;
+    width:200px;
+    margin:10px 10px 10px 0;
+}
+.error{
+    color:red;
+    margin:0 0 0 0;
+}
+</style>
 </head>
 <body>
-    <form method="POST">
+    <h2>Стилизация полей</h2>
+    <form method="POST" action="create/">
         {% csrf_token %}
+        {% for field in form %}
+            <div class="row">
+                {{field.label_tag}}
+                <div class="col-md-lO">{{field}}</div>
+                <div class="error">{{field.errors}}</div>
+            </div>
+        {% endfor %}
+        <input type="submit" value="Отправить">
+    </form>
+    {% if people.count > 0 %}
+    <h2>Сnисок пользователей</h2>
     <table>
-        {{ form.as_table }}
+        <tr><th>Id</th><th>Имя</th><th>Boзpacт</th></tr>
+        {% for person in people %}
+            <tr>
+                <td>{{ person.id }}</td>
+                <td>{{ person.name }}</td>
+                <td>{{ person.age }}</td>
+                <td><a href="edit/{{person.id}}">Изменить</a> | 
+                    <a href="delete/{{person.id}}">Удалить</a></td>
+            </tr>
+        {% endfor %}
     </table>
-    <input type="submit" value="Отправить">
+    {% endif %}
 </form>
 </body>
 </html>
